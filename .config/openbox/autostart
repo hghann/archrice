@@ -1,0 +1,8 @@
+tint2 &
+nm-applet &
+nitrogen --restore &
+mmaker openbox -f -t xterm &
+
+#conky -c ~/.config/conky/openbox.conkyrc
+#(sleep 1s && blueberry-tray) &
+#(sleep 1s volumeicon) &

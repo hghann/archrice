@@ -1,0 +1,5 @@
+.local/bin
+etc/
+crontab
+grubcheckshift.sh
+installtexlab.sh

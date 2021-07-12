@@ -1,0 +1,15 @@
+[Default Applications]
+image/png=sxiv.desktop
+application/pdf=zathura.desktop
+image/jpg=sxiv.desktop
+image/jpeg=sxiv.desktop
+text/html=firefox.desktop
+video/mp4=mpv.desktop
+text/plain=vim.desktop
+application/xml=vim.desktop
+application/octet-stream=vim.desktop
+
+[Added Associations]
+text/plain=vim.desktop;notepadqq.desktop;
+application/xml=vim.desktop;notepadqq.desktop;
+application/octet-stream=vim.desktop;
