@@ -23,7 +23,7 @@ These dotfiles are intended to go with numerous suckless programs I use:
 - [dwmblocks](https://github.com/worthyox/dwmblocks) (statusbar)
 - [st](https://github.com/worthyox/st) (terminal emulator)
 
-##Install these dotfiles and all dependencies
+## Install these dotfiles and all dependencies
 
 Use Makefile to autoinstall everything:
 
