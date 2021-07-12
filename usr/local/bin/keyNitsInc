@@ -1,0 +1,5 @@
+#!/bin/bash
+# keyNitsInc
+
+brightnessctl -q --device='smc::kbd_backlight' set +25;
+keyNitsDisplay

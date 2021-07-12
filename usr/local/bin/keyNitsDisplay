@@ -1,0 +1,11 @@
+#!/bin/bash
+# displayKeyNits
+
+# Arbitrary but unique message id
+msgId="472935"
+
+# Query amixer for the current volume and whether or not the speaker is muted
+brightness="$(brightnessctl -q --device='smc::kbd_backlight' | awk '{print $4}' | sed -n 2p | sed 's/^.//;s/.$//')"
+    # Show the volume notification
+    dunstify -a "changeKeyNits" -u low -i keyboard-brightness -r "$msgId" \
+    -h int:value:"$brightness" "Keyboard: ${brightness}"

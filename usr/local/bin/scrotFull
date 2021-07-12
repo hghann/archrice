@@ -1,0 +1,5 @@
+#!/bin/bash
+# scrotFull
+
+scrot '%Y-%m-%d-%M-%S_$wx$h.png' -e 'mv $f ~/pictures/screenshots';
+notify-send 'Scrot' 'Fullscreen taken'

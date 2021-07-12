@@ -107,19 +107,22 @@ vimupdate: ## Updates vim config
 installsuckless: ## Install and setup suckless programs
 	$(MKDIR) $(HOME)/.suckless
 	git clone https://github.com/worthyox/dwm $(HOME)/.suckless
-	git clone https://github.com/worthyox/dmenu $(HOME)/.suckless
 	git clone https://github.com/worthyox/st $(HOME)/.suckless
+	git clone https://github.com/worthyox/dmenu $(HOME)/.suckless
 	cd $(HOME)/.suckless/dwm && make -f $(HOME)/.suckless/dwm/Makefile
-	cd $(HOME)/.suckless/dmenu && make -f $(HOME)/.suckless/dmenu/Makefile
 	cd $(HOME)/.suckless/st && make -f $(HOME)/.suckless/st/Makefile
+	cd $(HOME)/.suckless/dmenu && make -f $(HOME)/.suckless/dmenu/Makefile
 
 sucklessupdate: ## Updates suckless programs
 	cd $(HOME)/.suckless/dwm;\
-		git pull
-	cd $(HOME)/.suckless/dmenu;\
-		git pull
+		git pull;\
+			 make -f $(HOME)/.suckless/dwm/Makefile
 	cd $(HOME)/.suckless/st;\
-		git pull
+		git pull;\
+			 make -f $(HOME)/.suckless/st/Makefile
+	cd $(HOME)/.suckless/dmenu;\
+		git pull;\
+			 make -f $(HOME)/.suckless/dmenu/Makefile
 
 testinit: ## Test initial deploy dotfiles
 	rm -rf $(HOME)/.config/alacritty
@@ -243,7 +246,7 @@ PREFIX = /usr/local
 MANPREFIX = $(PREFIX)/share/man
 TMPDIR = $(PWD)/tmp
 
-walk: ## installs plan9 make SUDO NEEDED
+walk: ## installs plan9 find SUDO NEEDED
 	$(MKDIR) $(TMPDIR)
 	git clone https://github.com/google/walk.git $(TMPDIR)/walk
 	cd $(TMPDIR)/walk && make
@@ -266,7 +269,7 @@ jot: ## install jot a markdown style  preprocessor for note-taking in groff
 
 # grap can be found here: https://www.lunabase.org/-faber/Vault/software/grap/
 
-base: ## Install base and base-devel package and doas
+base: ## Install base and base-devel package plus doas because sudo is bloated
 	$(PKGINSTALL) filesystem gcc-libs glibc bash coreutils file findutils gawk \
 		grep procps-ng sed tar gettext pciutils psmisc shadow util-linux bzip2 gzip \
 		xz licenses pacman systemd systemd-sysvcompat iputils iproute2 autoconf sudo \
@@ -289,8 +292,20 @@ install: ## Install arch linux packages using pacman
 aur: ## Install arch linux AUR packages using yay
 	yay -S --needed - < $(PWD)/pkg/aurlist
 
-yay: ## Install yay using yay
-	$(PKGINSTALL) yay
+####yay: ## Install yay using yay
+####	$(PKGINSTALL) yay
+
+yay: paru ## Setup yay (AUR Helper)
+	# sudo pacman -S --needed base-devel
+	$(MKDIR) $(TMPDIR)
+	git clone https://aur.archlinux.org/yay.git $(TMPDIR)/yay
+	cd $(TMPDIR)/yay && makepkg -si
+
+paru: yay ## Setup paru (AUR Helper) or simply install using yay
+	# sudo pacman -S --needed base-devel
+	$(MKDIR) $(TMPDIR)
+	git clone https://aur.archlinux.org/paru.git $(TMPDIR)/paru
+	cd $(TMPDIR)/paru && makepkg -si
 
 desktop: ## Update desktop entry
 	$(SUDO) $(LN) $(PWD)/usr/share/applications/vim.desktop /usr/share/applications/vim.desktop
@@ -323,14 +338,15 @@ testpath: ## ECHO PATH
 	echo $(HOME)
 	HOME=$(HOME)
 
-archinstall: base install vim installsuckless yay tlp init networkmanager pacmancolors doas sudo suspend aur scripts X
+archinstall: base install vim installsuckless paru yay tlp init networkmanager pacmancolors doas sudo suspend aur scripts X
 
-allinstall: install init yay tlp aur
+allinstall: install init paru yay tlp aur
 
 allupdate: update vimupdate scriptsupdate sucklessupdate
 
 allbackup: backup
 
+.DEFAULT_GOAL := help
 .PHONY: allinstall allupdate allbackup
 
 help: ## Prints out Make help
