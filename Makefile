@@ -1,5 +1,5 @@
-# inspired by these dotfiles
-# https://github.com/masasam/dotfiles
+# inspired by this video
+# https://www.youtube.com/watch?v=aP8eggU2CaU
 
 BASE = $(PWD)
 SCRIPTS = $(HOME)/.scripts
