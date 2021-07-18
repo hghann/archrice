@@ -1,16 +1,5 @@
-#
-# ▒███████▒  ██████   ██░ ██  ▓█████ ███▄    █  ██▒   █▓
-# ▒ ▒ ▒ ▄▀░▒██    ▒ ▒▓██░ ██  ▓█   ▀ ██ ▀█   █ ▓██░   █▒
-# ░ ▒ ▄▀▒░ ░ ▓██▄   ░▒██▀▀██  ▒███  ▓██  ▀█ ██▒ ▓██  █▒░
-#   ▄▀▒   ░  ▒   ██▒ ░▓█ ░██  ▒▓█  ▄▓██▒  ▐▌██▒  ▒██ █░░
-# ▒███████▒▒██████▒▒ ░▓█▒░██▓▒░▒████▒██░   ▓██░   ▒▀█░
-# ░▒▒ ▓░▒░▒▒ ▒▓▒ ▒ ░  ▒ ░░▒░▒░░░ ▒░ ░ ▒░   ▒ ▒    ░ ▐░
-#  ░▒ ▒ ░ ▒░ ░▒  ░ ░  ▒ ░▒░ ░░ ░ ░  ░ ░░   ░ ▒░   ░ ░░
-# ░ ░ ░ ░ ░░  ░  ░    ░  ░░ ░    ░     ░   ░ ░       ░
-#   ░ ░          ░    ░  ░  ░░   ░           ░       ░
-#
-# My zsh config. Not much to see here; just some pretty standard stuff.
-#
+# File: .zshenv
+# Maintainer: Worthyox
 
 # Other XDG paths
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
@@ -18,7 +7,7 @@ export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 
 # Default Apps
-export TERMINAL="alacritty"
+export TERMINAL="st"
 export COLORTERM="truecolor"
 export EDITOR="vim"
 export VISUAL="vim"
@@ -28,7 +17,7 @@ export IMAGE="sxiv"
 export BROWSER="firefox"
 export PAGER="less"
 export CODEEDITOR="notepadqq"
-export WM="openbox"
+export WM="dwm"
 export OPENER="xdg-open"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 
@@ -43,13 +32,10 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 
 # Set Manager
 # Uncomment only one of these!
-
 ## "bat" as manpager
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
 ## "vim" as manpager
 # export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
-
 ## "nvim" as manpager
 # export MANPAGER="nvim -c 'set ft=man' -"
 

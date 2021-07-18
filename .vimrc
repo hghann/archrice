@@ -1,16 +1,6 @@
 " File: .vimrc
 " Maintainer: Worthyox
-"  ██▒   █▓ ██▓ ███▄ ▄███▓ ██▀███   ▄████▄
-" ▓██░   █▒▓██▒▓██▒▀█▀ ██▒▓██ ▒ ██▒▒██▀ ▀█
-"  ▓██  █▒░▒██▒▓██    ▓██░▓██ ░▄█ ▒▒▓█    ▄
-"   ▒██ █░░░██░▒██    ▒██ ▒██▀▀█▄  ▒▓▓▄ ▄██▒
-"    ▒▀█░  ░██░▒██▒   ░██▒░██▓ ▒██▒▒ ▓███▀ ░
-"    ░ ▐░  ░▓  ░ ▒░   ░  ░░ ▒▓ ░▒▓░░ ░▒ ▒  ░
-"    ░ ░░   ▒ ░░  ░      ░  ░▒ ░ ▒░  ░  ▒
-"      ░░   ▒ ░░      ░     ░░   ░ ░
-"       ░   ░         ░      ░     ░ ░
-"      ░                           ░
-"
+
 " Quick Init: {{{1 "
 " block plugins and extra dependency's
 let g:python_host_prog  = '/usr/bin/python2'
@@ -54,8 +44,7 @@ set nowritebackup nobackup noswapfile           "Remove backup and swap files
 set encoding=utf-8                              "Allow emojis in vimrc
 scriptencoding utf-8                            "Allow emojis in vimrc
 set fileencoding=utf-8                          "The encoding written to file
-"set clipboard=unnamedplus                       "Copy/paste between vim and other programs
-set clipboard^=unnamed,unnamedplus             "xclip support
+set clipboard^=unnamed,unnamedplus              "xclip support
 set foldmethod=syntax                           "Enable folding
 set foldlevel=99                                "Start with all folds open
 set number relativenumber                       "Set line numbers
@@ -68,7 +57,6 @@ set updatetime=300                              "Faster completion
 set path+=**                                    "Searches current directory recursively.
 set splitbelow splitright                       "Open splits to the right and below
 set incsearch smartcase ignorecase hlsearch     "Better search
-"set scrolljump=-15                              "Jump 15 when moving cursor bellow screen
 "set nocompatible
 set list title wrap nocursorline mouse=a conceallevel=2
 set wildmenu wildmode=longest,list,full wildignorecase  " Autocompletion of commands
@@ -145,9 +133,9 @@ inoremap {<CR> {<CR>}<c-o><s-o>
 inoremap (<CR> (<CR>)<c-o><s-o>
 
 nnoremap <leader>s :source ~/.vimrc<CR>
-autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid dwmblocks & }
 nnoremap <leader>z :set invrnu invnu<CR>
-nnoremap Q <nop>
+autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid dwmblocks & }
+autocmd BufWritePost ~/.suckless/dwmblocks/config.h !cd ~/.suckless/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid dwmblocks & }
 
 "Find Files {{{2 "
 "Bookmarked directories
@@ -179,34 +167,7 @@ set statusline+=\ %p%%"
 set statusline+=\ %l:%c
 set statusline+=\ 
 set laststatus=2        "show statusbar
-
 " 1}}} Aesthetics "
-
-" FileType Specific Stuff: {{{1 "
-augroup GITCOMMITS
-    "Spelling for gitcommits
-    autocmd!
-    autocmd FileType gitcommit silent call dotvim#WordProcessor()
-    autocmd FileType gitcommit startinsert
-augroup end
-
-augroup AUTOEXEC
-    autocmd!
-    autocmd BufWritePost ~/.config/bmdirs,~/.config/bmfiles !shortcuts.sh
-    "Run xrdb whenever Xresources are updated.
-    autocmd BufWritePost *Xresources !xrdb ~/.Xresources
-augroup end
-
-augroup WRIGHTING
-    autocmd!
-    autocmd FileType markdown,pandoc nnoremap <buffer> <leader>i :<C-U>call dotvim#ImportScreenShot(function('dotvim#MarkdownScreenShot'),'.eps')
-    autocmd FileType dotoo,org nnoremap <buffer> <leader>i       :<C-U>call dotvim#ImportScreenShot(function('dotvim#OrgScreenShot'),'.eps')
-    autocmd FileType groff,troff,nroff nnoremap <buffer> <leader>i     :<C-U>call dotvim#ImportScreenShot(function('dotvim#GroffScreenShot'),'.eps')
-    "autocmd FileType groff,troff,nroff nnoremap <buffer> <leader>i     :<C-U>call dotvim#ImportScreenShot(function('dotvim#NeatroffScreenShot'),'.eps')
-    autocmd BufRead,BufNewFile *.md,*.tex,*.wiki call dotvim#WordProcessor()
-    autocmd FileType markdown,pandoc,dotoo,org execute "setlocal dictionary+=". &runtimepath . '/extra/dict/latex_comp.txt'
-augroup END
-" 1 }}}" FileType Specific Stuff
 
 " Abbreviations: {{{1 "
 " Command Alias:  {{{2
@@ -229,7 +190,6 @@ call SetupCommandAlias('ss','s//g\<Left>\<Left>')
 " 2}}} Command Alias
 
 " spelling
-iab pyhton python
 iab the the
 iab because because
 iab tf,  Therefore,

@@ -40,7 +40,6 @@ done; unset command
 alias sx='startx'
 alias ex='exit'
 alias c='clear'
-alias cat='bat'
 #alias sudo='doas'
 
 # utilities
@@ -49,11 +48,12 @@ alias wtrrep='curl -sf wttr.in > $HOME/.local/share/weatherreport'
 alias myip='curl ifconfig.co'
 
 # navigation
-alias ..='cd ..'
-alias ...='cd ../..'
-alias .3='cd ../../..'
-alias .4='cd ../../../..'
-alias .5='cd ../../../../..'
+alias \
+	..='cd ..' \
+	...='cd ../..' \
+	.3='cd ../../..' \
+	.4='cd ../../../..' \
+	.5='cd ../../../../..'
 
 # pacman and yay
 alias pacsyu='sudo pacman -Syyu'                  # update only standard pkgs
@@ -65,10 +65,11 @@ alias parsyu='paru -Syu --noconfirm'              # update standard pkgs and AUR
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'  # remove orphaned packages
 
 # get fastest mirrors
-alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
-alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
-alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+alias \
+	mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist" \
+	mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist" \
+	mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist" \
+	mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
 # change "ls" to "exa"
 alias ls='exa -al --color=always --group-directories-first' # my preferred listing
@@ -78,16 +79,18 @@ alias lt='exa -aT --color=always --group-directories-first' # tree listing
 alias l.='exa -a | egrep "^\."'
 
 # colorize grep output (good for log files)
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
+alias \
+	grep="grep --color=auto" \
+	egrep="egrep --color=auto" \
+	fgrep="fgrep --color=auto"
 
 # Colorize commands when possible.
 alias \
 	ls="ls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
-	ccat="highlight --out-format=ansi"
+	ccat="highlight --out-format=ansi" \
+	cat='bat'
 
 # confirm before overwriting something
 # Verbosity and settings that you pretty much just always are going to want.
@@ -111,9 +114,9 @@ alias \
 	e="$EDITOR" \
 	v="$EDITOR" \
 	p="sudo pacman" \
-	xi="sudo xbps-install" \
-	xr="sudo xbps-remove -R" \
-	xq="xbps-query" \
+	pi="sudo pacman -S" \
+	pr="sudo pacman -Rns" \
+#	xq="xbps-query" \
 	z="zathura" \
 	n="newsboat"
 
@@ -125,7 +128,6 @@ alias vifm='./.config/vifm/scripts/vifmrun'
 alias lf='/usr/local/bin/lfrun'
 alias ncmpcpp='ncmpcpp ncmpcpp_directory=$HOME/.config/ncmpcpp/'
 alias mocp='mocp -M "$XDG_CONFIG_HOME"/moc -O MOCDir="$XDG_CONFIG_HOME"/moc'
-
 # get top process eating memory
 alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
@@ -133,27 +135,36 @@ alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 
-# Merge Xresources
-alias merge='xrdb -merge ~/.Xresources'
-
-
-
 # git
-alias addup='git add -u'
-alias addall='git add .'
-alias branch='git branch'
-alias checkout='git checkout'
-alias clone='git clone'
-alias commit='git commit -m'
-alias fetch='git fetch'
-alias pull='git pull origin'
-alias push='git push origin'
-alias status='git status'
-alias tag='git tag'
-alias newtag='git tag -a'
-alias gitf="cd downloads/gitthings"
+alias \ 
+	addup='git add -u' \
+	addall='git add .' \
+	branch='git branch' \
+	checkout='git checkout' \
+	clone='git clone' \
+	commit='git commit -m' \
+	fetch='git fetch' \
+	pull='git pull origin' \
+	push='git push origin' \
+#	status='git status' \
+	tag='git tag' \
+	newtag='git tag -a' \
+	gitf="cd downloads/gitthings"
 # bare git repo alias for dotfiles
 alias config="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
+
+# youtube-dl
+alias \
+	ydl="youtube-dl -x --audio-format mp3 -a $HOME/urls" \
+	yta-aac="youtube-dl --extract-audio --audio-format aac " \
+	yta-best="youtube-dl --extract-audio --audio-format best " \
+	yta-flac="youtube-dl --extract-audio --audio-format flac " \
+	yta-m4a="youtube-dl --extract-audio --audio-format m4a " \
+	yta-mp3="youtube-dl --extract-audio --audio-format mp3 " \
+	yta-opus="youtube-dl --extract-audio --audio-format opus " \
+	yta-vorbis="youtube-dl --extract-audio --audio-format vorbis " \
+	yta-wav="youtube-dl --extract-audio --audio-format wav " \
+	ytv-best="youtube-dl -f bestvideo+bestaudio "
 
 # gpg encryption
 # verify signature for isos
@@ -161,21 +172,12 @@ alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 # receive the key of a developer
 alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
 
-# youtube-dl
-alias ydl="youtube-dl -x --audio-format mp3 -a /Users/hadiibrahim/urls"
-alias yta-aac="youtube-dl --extract-audio --audio-format aac "
-alias yta-best="youtube-dl --extract-audio --audio-format best "
-alias yta-flac="youtube-dl --extract-audio --audio-format flac "
-alias yta-m4a="youtube-dl --extract-audio --audio-format m4a "
-alias yta-mp3="youtube-dl --extract-audio --audio-format mp3 "
-alias yta-opus="youtube-dl --extract-audio --audio-format opus "
-alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
-alias yta-wav="youtube-dl --extract-audio --audio-format wav "
-alias ytv-best="youtube-dl -f bestvideo+bestaudio "
-
 # switch between shells
 alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
 alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
+
+# Merge Xresources
+alias merge='xrdb -merge ~/.Xresources'
 
 # remind
 alias erem="vim ~/.reminders/remind.rem"

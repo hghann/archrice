@@ -25,7 +25,7 @@ These dotfiles are intended to go with numerous suckless programs I use:
 
 ## Install these dotfiles and all dependencies
 
-Use Makefile to autoinstall everything:
+Use Makefile to deploy everything:
 
 ```
 make init

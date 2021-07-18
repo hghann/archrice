@@ -7,9 +7,6 @@ nitrogen --restore &            # set wallpaper
 xrdb ~/.config/X11/xresources & # uncomment to use Xresources colors/settings on startup
 dunst &                         # dunst for notifications
 xset r rate 300 50 &            # Speed xrate up
-dwmblocks &
+unclutter &                     # Remove mouse when idle
 
 exec dwm
-#exec openbox-session
-#exec icewm-session
-#exec fvwm3
