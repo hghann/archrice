@@ -133,6 +133,37 @@ testinit: ## Test initial deploy dotfiles
 	#test -L $(HOME)/.config/$@/$@.mxl || rm -rf $(HOME)/.config/$@/$@.mxl
 	#ln -vsf {$(PWD),$(HOME)}/.config/$@/$@.mxl
 
+initdarwin: ## Inital deploy dotfiles on osx machine
+	$(LN) $(PWD)/.bash_profile $(HOME)/.bash_profile
+	$(LN) $(PWD)/.bashrc $(HOME)/.bashrc
+	$(LN) $(PWD)/.profile $(HOME)/.profile
+	$(LN) $(PWD)/.zshenv $(HOME)/.zshenv
+	rm -rf $(HOME)/.config/alacritty
+	$(LNDIR) $(PWD)/.config/alacritty $(HOME)/.config/alacritty
+	rm -rf $(HOME)/.config/lf
+	$(LNDIR) $(PWD)/.config/lf $(HOME)/.config/lf
+	rm -rf $(HOME)/.config/mpd
+	$(LNDIR) $(PWD)/.config/mpd $(HOME)/.config/mpd
+	rm -rf $(HOME)/.config/mpv
+	$(LNDIR) $(PWD)/.config/mpv $(HOME)/.config/mpv
+	rm -rf $(HOME)/.config/ncmpcpp
+	$(LNDIR) $(PWD)/.config/ncmpcpp $(HOME)/.config/ncmpcpp
+	rm -rf $(HOME)/.config/newsboat
+	$(LNDIR) $(PWD)/.config/newsboat $(HOME)/.config/newsboat
+	rm -rf $(HOME)/.config/startpage
+	$(LNDIR) $(PWD)/.config/startpage $(HOME)/.config/startpage
+	rm -rf $(HOME)/.config/wget
+	$(LNDIR) $(PWD)/.config/wget $(HOME)/.config/wget
+	rm -rf $(HOME)/.config/X11
+	$(LNDIR) $(PWD)/.config/X11 $(HOME)/.config/X11
+	rm -rf $(HOME)/.config/zathura
+	$(LNDIR) $(PWD)/.config/zathura $(HOME)/.config/zathura
+	rm -rf $(HOME)/.config/zsh
+	$(LNDIR) $(PWD)/.config/zsh $(HOME)/.config/zsh
+	$(LN) $(PWD)/.config/starship.toml $(HOME)/.config/starship.toml
+	rm -rf $(HOME)/.qutebrowser
+	$(LNDIR) $(PWD)/.qutebrowser $(HOME)/.qutebrowser
+
 init: ## Inital deploy dotfiles
 	$(LN) $(PWD)/.bash_profile $(HOME)/.bash_profile
 	$(LN) $(PWD)/.bashrc $(HOME)/.bashrc
@@ -180,7 +211,7 @@ init: ## Inital deploy dotfiles
 	$(LN) $(PWD)/.config/mimeapps.list $(HOME)/.config/mimeapps.list
 	$(LN) $(PWD)/.config/starship.toml $(HOME)/.config/starship.toml
 	$(LN) $(PWD)/.config/user-dirs.dirs $(HOME)/.config/user-dirs.dirs
-	$(MKDIR) $(HOME)/.local/share/
+	#$(MKDIR) $(HOME)/.local/share/
 	#rm -rf $(HOME)/.local/share/applications
 	#$(LNDIR) $(PWD)/.local/share/applications $(HOME)/.local/share/applications
 

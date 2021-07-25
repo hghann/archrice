@@ -69,6 +69,7 @@ let g:rehash256 = 1
 if empty($XDG_CACHE_HOME)
     let $XDG_CACHE_HOME = $HOME . '/.cache'
 endif
+
 " see :help persistent-undo
 if !isdirectory($XDG_CACHE_HOME . '/vim/undo')
     call mkdir($XDG_CACHE_HOME . '/vim/undo', 'p')
@@ -94,55 +95,55 @@ set directory=$XDG_CACHE_HOME/vim/swap//,/var/tmp//,/tmp//
 " 1}}} "General Settings
 
 " Key Bindings {{{1 "
-let g:mapleader = "\<Space>"
-
-" Better tabbing
-vnoremap < <gv
-vnoremap > >gv
-
-" Remap splits navigation to just CTRL + hjkl
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-" Make adjusing split sizes a bit more friendly
-noremap <silent> <C-Left> :vertical resize +3<CR>
-noremap <silent> <C-Right> :vertical resize -3<CR>
-noremap <silent> <C-Up> :resize +3<CR>
-noremap <silent> <C-Down> :resize -3<CR>
-
-" Open or compile file
-map <silent><leader>co :!opout <c-r>%<CR><CR>
-
-" Write To File As Sudo
-nnoremap <leader>sudo :w !sudo tee > /dev/null %
-
-" if this is a normal buffer use <CR> to toggle folding
-nmap <expr> <CR> &buftype ==# '' ? 'za' : "\<CR>"
-
-" copy all matches with the last seach
-nmap ym :YankMatch<CR>
-" delete matches
-nmap dm :%s/<c-r>///g<CR>
-" change matches
-nmap cm :%s/<c-r>///g<Left><Left>
-
+    let g:mapleader = "\<Space>"
+"Better tabbing
+    vnoremap < <gv
+    vnoremap > >gv
+"Remap splits navigation to just CTRL + hjkl
+    nnoremap <C-h> <C-w>h
+    nnoremap <C-j> <C-w>j
+    nnoremap <C-k> <C-w>k
+    nnoremap <C-l> <C-w>l
+"Make adjusing split sizes a bit more friendly
+    noremap <silent> <C-Left> :vertical resize +3<CR>
+    noremap <silent> <C-Right> :vertical resize -3<CR>
+    noremap <silent> <C-Up> :resize +3<CR>
+    noremap <silent> <C-Down> :resize -3<CR>
+"Copy selected text to system clipboard (requires gvim/nvim/vim-x11 installed):
+    vnoremap <C-c> "+y
+    map <C-p> "+P
+"Newtab with ctrl+t
+    nnoremap <silent> <C-t> :tabnew<CR>
+"Paste from system clipboard with ctrl+i instead of shift insert
+    map <S-Insert> <C-i>
+"Open or compile file
+    map <silent><leader>co :!opout <c-r>%<CR><CR>
+"Write To File As Sudo
+    nnoremap <leader>sudo :w !sudo tee > /dev/null %
+"If this is a normal buffer use <CR> to toggle folding
+    nmap <expr> <CR> &buftype ==# '' ? 'za' : "\<CR>"
+"Copy all matches with the last seach
+    nmap ym :YankMatch<CR>
+"Replace all is aliased to S.
+    nnoremap S :%s//g<Left><Left>
+"Delete matches
+    nmap dm :%s/<c-r>///g<CR>
+"Change matches
+    nmap cm :%s/<c-r>///g<Left><Left>
 "For Proper Tabbing And Bracket Insertion"
-inoremap {<CR> {<CR>}<c-o><s-o>
-inoremap (<CR> (<CR>)<c-o><s-o>
-
-nnoremap <leader>s :source ~/.vimrc<CR>
-nnoremap <leader>z :set invrnu invnu<CR>
-autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid dwmblocks & }
-autocmd BufWritePost ~/.suckless/dwmblocks/config.h !cd ~/.suckless/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid dwmblocks & }
+    inoremap {<CR> {<CR>}<c-o><s-o>
+    inoremap (<CR> (<CR>)<c-o><s-o>
+"More bindings
+    nnoremap <leader>s :source ~/.vimrc<CR>
+    nnoremap <leader>z :set invrnu invnu<CR>
+    autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid dwmblocks & }
 
 "Find Files {{{2 "
 "Bookmarked directories
-nnoremap <leader>fu  :edit ~/documents/university/**/*
-nnoremap <leader>fd  :edit ~/Documents/**/*
-nnoremap <leader>fv  :edit ~/.vim/**/*
-nnoremap <leader>fh  :edit ~/**
+    nnoremap <leader>fu  :edit ~/documents/university/**/*
+    nnoremap <leader>fd  :edit ~/Documents/**/*
+    nnoremap <leader>fv  :edit ~/.vim/**/*
+    nnoremap <leader>fh  :edit ~/**
 " 2}}} "Find Files
 " 2}}} " Key Bindings
 
@@ -166,7 +167,7 @@ set statusline+=\[%{&fileformat}\]
 set statusline+=\ %p%%"
 set statusline+=\ %l:%c
 set statusline+=\ 
-set laststatus=2        "show statusbar
+set laststatus=2                "show statusbar
 " 1}}} Aesthetics "
 
 " Abbreviations: {{{1 "

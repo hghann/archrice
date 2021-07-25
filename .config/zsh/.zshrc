@@ -84,7 +84,7 @@ setopt HIST_FIND_NO_DUPS HIST_SAVE_NO_DUPS
 /usr/local/bin/randomcolors.sh
 
 # Set the starship prompt
-eval "$(starship init zsh)"
+#eval "$(starship init zsh)"
 
 # Source zsh plugins; Should be last
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

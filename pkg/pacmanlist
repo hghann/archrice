@@ -27,6 +27,7 @@ gawk
 gcc
 gettext
 git
+gnome-themes-extra
 grep
 groff
 grub
@@ -63,8 +64,10 @@ pkgconf
 python-pyxdg
 qt5ct
 qutebrowser
+reflector
 remind
 rofi
+rsync
 rxvt-unicode
 scrot
 sed
@@ -83,6 +86,7 @@ ttf-liberation
 ttf-linux-libertine
 ueberzug
 ufw
+unclutter
 unzip
 vim
 which

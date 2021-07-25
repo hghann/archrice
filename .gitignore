@@ -1,3 +1,4 @@
+.gitignore
 .local/bin
 etc/
 crontab
