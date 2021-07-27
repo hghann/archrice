@@ -4,7 +4,7 @@
 # environment variables. Some entries may override variables
 # set by alacritty itself.
 env:
-  TERM: alacritty
+  TERM: xterm-256color
 
 window:
   # Window padding (changes require restart)
@@ -124,19 +124,8 @@ colors:
     cyan:    '#32d0fc'
     white:   '#acadb1'
 
-  # Bright colors
-  bright:
-    black:   '#36393d'
-    red:     '#ce2727'
-    green:   '#47c930'
-    yellow:  '#fff138'
-    blue:    '#2e4bea'
-    magenta: '#cc15ed'
-    cyan:    '#54d9ff'
-    white:   '#dbdbdb'
-
   # Dim colors
-  dim:
+  bright:
     black:   '#676f78'
     red:     '#b55454'
     green:   '#78a670'
