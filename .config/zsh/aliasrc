@@ -74,7 +74,7 @@ alias \
 alias merge='xrdb -merge ~/.Xresources'
 
 # Install Suckless software
-alias makesuck="rm -rf config.h && doas make clean install"
+alias makesuck="doas make clean install"
      ;;
    Darwin)
 # brew

@@ -1,14 +1,6 @@
-#
-#   ██▓    ▒ ████▒ ██▀███    ▄████▄
-#  ▓██▒   ▒▓██    ▓██ ▒ ██▒ ▒██▀ ▀█
-#  ▒██░   ░▒████  ▓██ ░▄█ ▒ ▒▓█    ▄
-#  ▒██░   ░░▓█▒   ▒██▀▀█▄  ▒▒▓▓▄ ▄██
-# ▒░██████ ░▒█░   ░██▓ ▒██▒░▒ ▓███▀
-# ░░ ▒░▓    ▒ ░   ░ ▒▓ ░▒▓░░░ ░▒ ▒
-# ░░ ░ ▒    ░       ░▒ ░ ▒    ░  ▒
-#    ░ ░    ░ ░     ░░   ░  ░
-# ░    ░             ░      ░ ░
-#
+# File: lfrc
+# Maintainer: worthyox [https://github.com/worthyox]
+
 # Basic Settings
 set previewer ~/.config/lf/preview
 set cleaner ~/.config/lf/cleaner
@@ -162,11 +154,15 @@ map <m-down> down
 
 # Movement
 map gc. cd ~/.config
-map gca cd ~/.config/alacritty
-map gcl cd ~/.config/lf
 map gcz cd ~/.config/zsh
-map gco cd ~/.config/openbox
+map gcx cd ~/.config/X11
+map gcl cd ~/.config/lf
 map gcs cd ~/.config/startpage
+
+map gdmenu cd ~/.local/src/dmenu
+map gdwm cd ~/.local/src/dwm
+map gblocks cd ~/.local/src/dwmblocks
+map gst cd ~/.local/src/st
 
 map gp. cd ~/pictures
 map gps cd ~/pictures/screenshots
@@ -174,11 +170,12 @@ map gpw cd ~/pictures/wallpapers
 
 map gts cd ~/university
 
-map gd cd ~/documents
-map gD cd ~/downloads
-map ge cd ~/desktop
+map gD cd ~/documents
+map gd. cd ~/downloads
+map gdg cd ~/downloads/gitthings
 
-map gE cd /etc
-map gU. cd /usr
-map gUs cd /usr/share
-map gUl cd /usr/local
+map gu. cd /usr
+map ge. cd /etc
+map gus cd /usr/share
+map gul cd /usr/local
+map gub cd /usr/local/bin
