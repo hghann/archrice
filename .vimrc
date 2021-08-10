@@ -154,6 +154,7 @@ set fillchars+=vert:\
 set t_Co=256 background=dark    "Sets 246 color and dark background
 syntax enable                   "Enables syntax highlighing
 colorscheme spaceway
+"colorscheme nucolors
 highlight Normal ctermbg=NONE
 highlight Conceal ctermbg=NONE
 

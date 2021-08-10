@@ -159,6 +159,8 @@ map gcx cd ~/.config/X11
 map gcl cd ~/.config/lf
 map gcs cd ~/.config/startpage
 
+map ga cd ~/archrice
+
 map gdmenu cd ~/.local/src/dmenu
 map gdwm cd ~/.local/src/dwm
 map gblocks cd ~/.local/src/dwmblocks
