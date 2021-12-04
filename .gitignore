@@ -1,5 +1,4 @@
 .gitignore
-.local/bin
 etc/
 crontab
 grubcheckshift.sh

@@ -1,0 +1,11 @@
+#!/bin/bash
+# changeLcdNits
+
+# Arbitrary but unique message id
+msgId="355610"
+
+# Query amixer for the current volume and whether or not the speaker is muted
+brightness="$(xbacklight -get | awk -F "." '{print $1}')"
+    # Show the volume notification
+    dunstify -a "changeLcdNits" -u low -i display-brightness -r "$msgId" \
+    -h int:value:"$brightness" "Brightness: ${brightness}%"
