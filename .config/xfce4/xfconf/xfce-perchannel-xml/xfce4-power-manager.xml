@@ -14,6 +14,10 @@
     <property name="power-button-action" type="uint" value="3"/>
     <property name="critical-power-level" type="uint" value="15"/>
     <property name="dpms-enabled" type="bool" value="false"/>
-    <property name="battery-button-action" type="uint" value="3"/>
+    <property name="battery-button-action" type="uint" value="0"/>
+    <property name="inactivity-sleep-mode-on-battery" type="uint" value="1"/>
+    <property name="lid-action-on-battery" type="uint" value="1"/>
+    <property name="logind-handle-lid-switch" type="bool" value="true"/>
+    <property name="lid-action-on-ac" type="uint" value="1"/>
   </property>
 </channel>
