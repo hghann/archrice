@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Home</title>
+    <link rel="stylesheet" href="file:///home/hg/.config/startpage/startpage.css">
+    <link href="favicon.png" rel="shortcut icon" type="image/x-icon"/>
+</head>
+<body>
+    <div id="search">
+        <input id="search-field" type="text" name="search-field"/>
+    </div>
+    <div class="container">
+        <div id="clock"></div>
+        <div class="weather-container">
+            <div class="row">
+                <div id="weather-description"class="inline"></div>
+                <div class="inline">-</div>
+                <div id="temp" class="inline"></div>
+            </div>
+        </div>
+        <div class="bookmark-container">
+            <div class="bookmark-set">
+                <div class="bookmark-title">School</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="https://uozone2.uottawa.ca/" target="_blank">UoZone</a>
+                    <a class="bookmark" href="https://uottawa.brightspace.com/d2l/home" target="_blank">Brightspace</a>
+                    <a class="bookmark" href="https://app.tophat.com/e/" target="_blank">Top Hat</a>
+                    <a class="bookmark" href="https://www.symbolab.com/" target="_blank">Symbolab</a>
+                    <a class="bookmark" href="https://eclassesconnect.contactnorth.ca/my/current" target="_blank">Contact Nord</a>
+                    <a class="bookmark" href="https://biblio.uottawa.ca/en" target="_blank">Omni</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+                <div class="bookmark-title">Favorites</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="https://searx.space/" target="_blank">Searx</a>
+                    <a class="bookmark" href="https://www.startpage.com/" target="_blank">Startpage</a>
+                    <a class="bookmark" href="https://alternativeto.net/" target="_blank">Alternativeto</a>
+                    <a class="bookmark" href="https://privacytools.io/" target="_blank">PrivacyTools</a>
+                    <a class="bookmark" href="https://sunknudsen.com/privacy-guides" target="_blank">Privacy Guides</a>
+                    <a class="bookmark" href="https://spyware.neocities.org/articles/index.html" target="_blank">Watchdog</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+                <div class="bookmark-title">General</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="https://odysee.com/" target="_blank">Odysee</a>
+                    <a class="bookmark" href="https://youtube.com/" target="_blank">Youtube</a>
+                    <a class="bookmark" href="https://discord.com/" target="_blank">Discord</a>
+                    <a class="bookmark" href="https://invidious.xyz/" target="_blank">Invidious</a>
+                    <a class="bookmark" href="https://netflix.com" target="_blank">Netflix</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+                <div class="bookmark-title">Unix</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="https://wiki.archlinux.org/" target="_blank">Arch Wiki</a>
+                    <a class="bookmark" href="https://github.com/worthyox" target="_blank">GitHub</a>
+                    <a class="bookmark" href="https://gitlab.com/dwt1" target="_blank">GitLab</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+            <div class="bookmark-title">Suckless</div>
+                    <a class="bookmark" href="https://www.suckless.org/" target="_blank">Suckless Homepage</a>
+                    <a class="bookmark" href="https://dwm.suckless.org/" target="_blank">dwm</a>
+                    <a class="bookmark" href="https://dmenu.suckless.org/" target="_blank">dmenu</a>
+                    <a class="bookmark" href="https://st.suckless.org/" target="_blank">st</a>
+                    <a class="bookmark" href="https://surf.suckless.org/" target="_blank">surf</a>
+                    <a class="bookmark" href="https://tools.suckless.org/tabbed/" target="_blank">tabbed</a>
+                <div class="bookmark-inner-container">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Search on enter key event
+        document.getElementById("search-field").addEventListener("keydown",  event => {
+            if (event.keyCode === 13) {
+                var val = document.getElementById("search-field").value;
+             window.open("https://duckduckgo.com/?q=" + val);
+             // window.open("https://searx.bar/search?q=" + val);
+            }
+        });
+        // Get current time and format
+        getTime = () => {
+            let date = new Date(),
+                min = date.getMinutes(),
+                sec = date.getSeconds(),
+                hour = date.getHours();
+
+            return "" +
+                (hour < 10 ? ("0" + hour) : hour) + ":" +
+                (min < 10 ? ("0" + min) : min) + ":" +
+                (sec < 10 ? ("0" + sec) : sec);
+        }
+
+        window.onload = () => {
+            let xhr = new XMLHttpRequest();
+            // Request to open weather map
+            xhr.open('GET', 'https://api.openweathermap.org/data/2.5/weather?lat=34&lon=35&units=metric&appid=9de243494c0b295cca9337e1e96b00e2');
+            xhr.onload = () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let json = JSON.parse(xhr.responseText);
+                        console.log(json);
+                        document.getElementById("temp").innerHTML = json.main.temp.toFixed(0) + " C";
+                        document.getElementById("weather-description").innerHTML = json.weather[0].description;
+                    } else {
+                        console.log('error msg: ' + xhr.status);
+                    }
+                }
+            }
+            xhr.send();
+            // Set up the clock
+            document.getElementById("clock").innerHTML = getTime();
+            // Set clock interval to tick clock
+            setInterval( () => {
+                document.getElementById("clock").innerHTML = getTime();
+            },100);
+        }
+
+        document.addEventListener("keydown", event => {
+            if (event.keyCode == 32) {          // Spacebar code to open search
+                document.getElementById('search').style.display = 'flex';
+                document.getElementById('search-field').focus();
+            } else if (event.keyCode == 27) {   // Esc to close search
+                document.getElementById('search-field').value = '';
+                document.getElementById('search-field').blur();
+                document.getElementById('search').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

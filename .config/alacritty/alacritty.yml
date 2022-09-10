@@ -1,0 +1,100 @@
+env:
+  TERM: xterm-256color
+
+window:
+  opacity: 1
+  padding:
+    x: 4
+    y: 4
+  #decorations: none
+  title: Alacritty
+  class:
+    instance: Alacritty
+    general: Alacritty
+  gtk_theme_variant: None
+
+scrolling:
+  history: 10000
+  multiplier: 1
+
+font:
+  normal:
+    family: SauceCodePro Nerd Font
+    style: Regular
+  bold:
+    family: SauceCodePro Nerd Font
+    style: Bold
+  italic:
+    family: SauceCodePro Nerd Font
+    style: Italic
+  bold_italic:
+    family: SauceCodePro Nerd Font
+    style: Bold Italic
+  size: 7.5
+  offset:
+    x: 0
+    y: 1
+
+draw_bold_text_with_bright_colors: true
+
+colors:
+  primary:
+    background: '#282c34'
+    foreground: '#bbc2cf'
+  cursor:
+    text: CellBackground
+    cursor: '#528bff'
+  selection:
+    text: CellForeground
+    background: '#3e4451'
+  normal:
+    black:   '#1c1f24'
+    red:     '#ff6c6b'
+    green:   '#98be65'
+    yellow:  '#da8548'
+    blue:    '#51afef'
+    magenta: '#c678dd'
+    cyan:    '#5699af'
+    white:   '0xbbc2cf'
+  bright:
+    black:   '#5b6268'
+    red:     '#da8548'
+    green:   '#4db5bd'
+    yellow:  '#ecbe7b'
+    blue:    '#3071db'   # This is 2257a0 in Doom Emacs but I lightened it.
+    magenta: '#a9a1e1'
+    cyan:    '#46d9ff'
+    white:   '#dfdfdf'
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: true
+
+dynamic_title: true
+
+cursor:
+  style: Block
+  unfocused_hollow: true
+
+live_config_reload: true
+
+working_directory: none
+
+key_bindings:
+  - { key: V,         mods: Alt,           action: Paste                       }
+  - { key: C,         mods: Alt,           action: Copy                        }
+  - { key: Insert,    mods: Shift,         action: PasteSelection              }
+  - { key: Key0,      mods: Control,       action: ResetFontSize               }
+  - { key: Equals,    mods: Control,       action: IncreaseFontSize            }
+  - { key: Plus,      mods: Control,       action: IncreaseFontSize            }
+  - { key: Minus,     mods: Control,       action: DecreaseFontSize            }
+  - { key: Minus,     mods: Control,       action: DecreaseFontSize            }
+  - { key: F11,       mods: None,          action: ToggleFullscreen            }
+  - { key: Paste,     mods: None,          action: Paste                       }
+  - { key: Copy,      mods: None,          action: Copy                        }
+  - { key: L,         mods: Control,       action: ClearLogNotice              }
+  - { key: L,         mods: Control,       chars: "\x0c"                       }
+  - { key: PageUp,    mods: None,          action: ScrollPageUp,   mode: ~Alt  }
+  - { key: PageDown,  mods: None,          action: ScrollPageDown, mode: ~Alt  }
+  - { key: Home,      mods: Shift,         action: ScrollToTop,    mode: ~Alt  }
+  - { key: End,       mods: Shift,         action: ScrollToBottom, mode: ~Alt  }

@@ -1,0 +1,42 @@
+# Theme Settings
+borderwidth 4
+color activeborder "#282a36"
+color inactiveborder "#282a36"
+color menubg "#282a36"
+color menufg "#44475a"
+color font "#f8f8f2"
+color selfont "#f8f8f2"
+
+# Set Font
+fontname "Hack:weight=bold:size=11"
+
+# Turn on sticky-group mode
+sticky yes
+
+# Keybindings
+# (firstly unbind the defaults - I am not quite a fan)
+# C = Control, M = ALT, S = Shift, 4 = Mod4 (Windows Key)
+#unbind-key all
+
+# My Custom Script Keybindings
+bind-key 4-slash		setwall
+bind-key 4-h			cwm-w-mv left
+bind-key 4-j			cwm-w-mv bottom
+bind-key 4-k			cwm-w-mv top
+bind-key 4-l			cwm-w-mv right
+bind-key 4-Left			cwm-w-mv left
+bind-key 4-Down			cwm-w-mv bottom
+bind-key 4-Up			cwm-w-mv top
+bind-key 4-Right		cwm-w-mv right
+
+# Mouse Keybindings
+unbind-mouse M-1
+unbind-mouse M-2
+unbind-mouse M-3
+bind-mouse 4-1			window-move
+bind-mouse 4-2			window-lower
+bind-mouse 4-3			window-resize
+
+# Applications Menu
+command Browser librewolf
+command Terminal alacritty

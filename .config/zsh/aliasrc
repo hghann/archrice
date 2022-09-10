@@ -1,0 +1,158 @@
+#!/bin/sh
+
+# Use neovim for vim if present.
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+# Use $XINITRC variable if file exists.
+[ -f "$XINITRC" ] && alias startx="startx $XINITRC"
+
+# doas/sudo not required for some system commands
+for command in mount umount sv pacman updatedb su ; do
+    alias $command="doas $command"
+done; unset command
+
+# miscellaneous
+alias \
+	sudo='doas' \
+	sx='startx' \
+	ex='exit' \
+	c='clear' \
+	mpd='mpd ~/.config/mpd/mpd.conf' \
+	myip='curl ifconfig.co' \
+	wtr='curl wttr.in' \
+	wtrrep='curl -sf wttr.in > $HOME/.local/share/weatherreport' \
+	spd='speedtest'
+
+# pacman, yay, and paru
+#alias unlock='sudo rm /var/lib/pacman/db.lck'     # remove pacman lock
+alias pacsyu='doas pacman -Syyu'                  # update only standard pkgs
+alias yaysua='yay -Sua --noconfirm'               # update only AUR pkgs (yay)
+alias yaysyu='yay -Syu --noconfirm'               # update standard pkgs and AUR pkgs (yay)
+alias parsua='paru -Sua --noconfirm'              # update only AUR pkgs (paru)
+alias parsyu='paru -Syu --noconfirm'              # update standard pkgs and AUR pkgs (paru)
+alias cleanup='doas pacman -Rns $(pacman -Qtdq)'  # remove orphaned packages
+alias pacache='pacman -Sc'
+# Get fastest mirrors
+alias mirror="doas reflector --verbose --sort rate -p https -l 15 --save /etc/pacman.d/mirrorlist"
+
+# get top process eating memory
+alias \
+	psmem='ps auxf | sort -nr -k 4' \
+	psmem10='ps auxf | sort -nr -k 4 | head -10'
+# get top process eating cpu
+alias \
+	pscpu='ps auxf | sort -nr -k 3' \
+	pscpu10='ps auxf | sort -nr -k 3 | head -10'
+
+# Merge Xresources
+alias merge='xrdb -merge ~/.Xresources'
+
+# Install Suckless software
+alias makesuck="doas make clean install"
+
+# Navigation
+alias \
+	..='cd ..' \
+	...='cd ../..' \
+	.3='cd ../../..' \
+	.4='cd ../../../..' \
+	.5='cd ../../../../..'
+
+# Change "ls" to "exa"
+alias \
+	ls='exa -al --color=always --group-directories-first' \
+	la='exa -a --color=always --group-directories-first' \
+	ll='exa -l --color=always --group-directories-first' \
+	lt='exa -aT --color=always --group-directories-first' \
+	l.='exa -a | egrep "^\."'
+
+# Colorize grep output (good for log files)
+alias \
+	grep='grep --color=auto' \
+	egrep='egrep --color=auto' \
+	fgrep='fgrep --color=auto'
+
+# Colorize commands when possible.
+alias \
+	diff="diff --color=auto" \
+	cat="bat" \
+	ccat="highlight --out-format=ansi"
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -vI" \
+	bc="bc -ql" \
+	mkd="mkdir -pv" \
+	yt="youtube-dl --add-metadata -i" \
+	yta="yt -x -f bestaudio/best" \
+	ffmpeg="ffmpeg -hide_banner"
+
+# These common commands are just too long! Abbreviate them.
+alias \
+	ka="killall" \
+	g="git" \
+	trem="transmission-remote" \
+	YT="youtube-viewer" \
+	sdn="doas shutdown -h now" \
+	e="$EDITOR" \
+	v="$EDITOR" \
+	p="doas pacman" \
+	z="zathura" \
+	n="newsboat"
+
+# Adding flags
+alias \
+	df='df -h' \
+	free='free -m' \
+	lf='/usr/local/bin/lfrun' \
+	vifm='./.config/vifm/scripts/vifmrun' \
+	ncmpcpp='ncmpcpp ncmpcpp_directory=$HOME/.config/ncmpcpp/' \
+	mocp='mocp -M "$XDG_CONFIG_HOME"/moc -O MOCDir="$XDG_CONFIG_HOME"/moc' \
+	lynx='lynx -cfg=~/.lynx/lynx.cfg -lss=~/.lynx/lynx.lss -vikeys'
+
+# Git
+alias \
+	addup='git add -u' \
+	addall='git add .' \
+	branch='git branch' \
+	checkout='git checkout' \
+	clone='git clone' \
+	commit='git commit -m' \
+	fetch='git fetch' \
+	pull='git pull origin' \
+	push='git push origin' \
+	status='git status' \
+	tag='git tag' \
+	newtag='git tag -a' \
+	gd="cd downloads/gitthings"
+
+# gpg encryption
+# verify signature for isos
+alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+# receive the key of a developer
+alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+
+# youtube-dl
+alias \
+	ydl="youtube-dl -x --audio-format mp3 -a $HOME/urls" \
+	yta-aac="youtube-dl --extract-audio --audio-format aac " \
+	yta-best="youtube-dl --extract-audio --audio-format best " \
+	yta-flac="youtube-dl --extract-audio --audio-format flac " \
+	yta-m4a="youtube-dl --extract-audio --audio-format m4a " \
+	yta-mp3="youtube-dl --extract-audio --audio-format mp3 " \
+	yta-opus="youtube-dl --extract-audio --audio-format opus " \
+	yta-vorbis="youtube-dl --extract-audio --audio-format vorbis " \
+	yta-wav="youtube-dl --extract-audio --audio-format wav " \
+	ytv-best="youtube-dl -f bestvideo+bestaudio "
+
+# Switch between shells
+alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
+alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
+
+# Remind
+alias erem="vim ~/.reminders/remind.rem"
+
+# Terminal rickroll
+alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# set wallpaper
+ 	nitrogen --restore &
+
+# start network manager
+	sleep 1 &&
+	nm-applet &
+
+# setup rightclick menu
+	mmaker icewm -f &
+
+# blueberry-tray &
+
+# enable bluetooth applet
+#	sleep 1 &&
+#	blueman-applet &!
+
+# volumeicon &
+

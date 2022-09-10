@@ -1,0 +1,69 @@
+menu "Development" folder {
+    prog "IDLE (Python IDE)" - idle
+    prog "Notepadqq" - notepadqq
+    prog "Python" - xterm -e python
+}
+menu "Editors" folder {
+    prog "Vim" - xterm -e vim
+}
+menu "Games" folder {
+    menu "Adventure" folder {
+        prog "Sclient" - sclient
+    }
+    menu "Arcade" folder {
+        prog "PacMan" - pacman
+    }
+}
+menu "Multimedia" folder {
+    prog "ALSA mixer" - xterm -e alsamixer
+    prog "mpv Media Player" - mpv --player-operation-mode=pseudo-gui
+    prog "Qt V4L2 test Utility" - qv4l2
+    prog "Qt V4L2 video capture utility" - qvidcap
+}
+menu "Network" folder {
+    prog "Avahi SSH Server Browser" - bssh
+    prog "Avahi VNC Server Browser" - bvnc
+    prog "FireFox" - firefox
+    prog "qutebrowser" - qutebrowser
+    prog "TkVNC" - xterm -e tkvnc
+}
+menu "Shells" folder {
+    prog "Alacritty" - alacritty
+    prog "File Manager PCManFM" - pcmanfm
+    prog "GIT" - xterm -e git
+    prog "lf" - xterm -e lf
+    prog "urxvt" - urxvt
+    prog "urxvt (client)" - urxvtc
+    prog "urxvt (tabbed)" - urxvt-tabbed
+    prog "UXTerm" - uxterm
+    prog "Xterm" - xterm
+}
+menu "System" folder {
+    menu "Settings" folder {
+        menu "GNOME" folder {
+            prog "Advanced Network Configuration" - nm-connection-editor
+        }
+        prog "Customize Look and Feel" - lxappearance
+        prog "Desktop Preferences" - pcmanfm --desktop-pref
+        prog "Kvantum Manager" - kvantummanager
+        prog "nitrogen" - nitrogen
+        prog "Openbox Configuration Manager" - obconf
+        prog "Preferred Applications" - libfm-pref-apps
+        prog "Qt5 Settings" - qt5ct
+        prog "Tint2 Settings" - tint2conf
+    }
+    prog "Avahi Zeroconf Browser" - avahi-discover
+    prog "Hardware Locality lstopo" - lstopo
+    prog "Htop" - xterm -e htop
+    prog "Pstree" - xterm -e pstree.x11
+    prog "pstree" - xterm -e /usr/bin/pstree.x11
+    prog "pstree" - xterm -e pstree
+    prog "Tint2" - tint2
+    prog "Top" - xterm -e top
+}
+menu "Utilities" folder {
+    prog "compton" - compton
+    prog "Info" - xterm -e info
+    prog "picom" - picom
+    prog "Xarchiver" - xarchiver
+}
