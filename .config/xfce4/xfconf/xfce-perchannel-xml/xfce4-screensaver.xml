@@ -14,5 +14,6 @@
     <property name="saver-activation" type="empty">
       <property name="delay" type="int" value="0"/>
     </property>
+    <property name="enabled" type="bool" value="false"/>
   </property>
 </channel>
