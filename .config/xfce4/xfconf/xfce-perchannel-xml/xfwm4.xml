@@ -86,11 +86,11 @@
       <value type="string" value="www"/>
       <value type="string" value="sys"/>
       <value type="string" value="doc"/>
-      <value type="string" value="Workspace 5"/>
-      <value type="string" value="Workspace 6"/>
-      <value type="string" value="Workspace 7"/>
-      <value type="string" value="Workspace 8"/>
-      <value type="string" value="Workspace 9"/>
+      <value type="string" value="vbox"/>
+      <value type="string" value="chat"/>
+      <value type="string" value="mus"/>
+      <value type="string" value="vid"/>
+      <value type="string" value="gfx"/>
     </property>
     <property name="margin_top" type="int" value="0"/>
     <property name="margin_left" type="int" value="0"/>
