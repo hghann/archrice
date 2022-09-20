@@ -64,6 +64,7 @@
       <property name="MonBrightnessDown" type="string" value="/home/hg/.local/bin/screen_brightness.sh down"/>
       <property name="MonBrightnessUp" type="string" value="/home/hg/.local/bin/screen_brightness.sh up"/>
       <property name="&lt;Super&gt;space" type="string" value="xfce4-popup-whiskermenu"/>
+      <property name="&lt;Super&gt;o" type="string" value="libreoffice"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
